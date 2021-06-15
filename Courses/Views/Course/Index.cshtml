@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Courses.Models.Course>
+
 @{
     Layout = null;
 }
@@ -12,5 +13,12 @@
 </head>
 <body>
     <h1>Courses List</h1>
+    <hr />
+    <ul>
+        @foreach (var course in Model)
+        {
+            <li><a href="/Course/Details/@course.Id">@course.Name</a></li>
+        }
+    </ul>
 </body>
 </html>
