@@ -7,7 +7,8 @@ namespace Courses.Models
 {
     public class Student
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public string StudentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
