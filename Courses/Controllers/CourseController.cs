@@ -10,22 +10,22 @@ namespace Courses.Controllers
 {
     public class CourseController : Controller
     {
-        public CourseRepository repo;
-        public CourseController()
+        public IRepository<Course> courseRepo;
+        public CourseController(IRepository<Course> courseRepo)
         {
-            repo = new CourseRepository();
+            this.courseRepo = courseRepo;
         }
 
         public ViewResult Index()
         {
             
-            return View(repo.GetAll());
+            return View(courseRepo.GetAll());
         }
 
         public ViewResult Details(int id)
         {
 
-            return View(repo.GetByID(id));
+            return View(courseRepo.GetByID(id));
         }
     }
 }

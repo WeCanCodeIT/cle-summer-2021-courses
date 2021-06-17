@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="" />
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div>
+        <h1>My Courses and Student Registration Application</h1>
+        <hr />
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

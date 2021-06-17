@@ -8,26 +8,21 @@ namespace Courses.Repositories
 {
     public class CourseRepository : IRepository<Course>
     {
-        public List<Course> courseList;
+        public UniversityContext db;
 
-        public CourseRepository()
+        public CourseRepository(UniversityContext db)
         {
-            courseList = new List<Course>()
-            {
-                new Course(156, "Psychology 101"),
-                new Course(259, "Sociology 101"),
-                new Course(458, "Political Science 101")
-            };
+            this.db = db;
         }
 
         public IEnumerable<Course> GetAll()
         {
-            return courseList;
+            return db.Courses.ToList();
         }
 
         public Course GetByID(int id)
         {
-            return courseList.Where(c => c.Id == id).FirstOrDefault();
+            return db.Courses.Where(c => c.Id == id).FirstOrDefault();
         }
     }
 }
