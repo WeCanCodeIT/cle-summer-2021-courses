@@ -15,7 +15,13 @@
 <body>
     <h1>Courses Details</h1>
     <hr />
-    <h4>Course Id: @Model.Id</h4>
-    <h4>Course Name: @Model.Name</h4>
+    <h3>Course Id: @Model.Id</h3>
+    <h3>Course Name: @Model.Name</h3>
+    <hr />
+    <h4>Students Enrolled</h4>
+    @foreach(var enrollment in Model.Students)
+    {
+        <p>@enrollment.Student.FullName</p>
+    }
 </body>
 </html>

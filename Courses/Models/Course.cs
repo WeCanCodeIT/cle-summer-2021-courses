@@ -9,6 +9,7 @@ namespace Courses.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public virtual List<StudentCourses> Students { get; set; }
         public Course()
         {
             Id = 99;

@@ -3,14 +3,16 @@ using Courses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Courses.Migrations
 {
     [DbContext(typeof(UniversityContext))]
-    partial class UniversityContextModelSnapshot : ModelSnapshot
+    [Migration("20210618143707_AddedStudentAndStudentCourses")]
+    partial class AddedStudentAndStudentCourses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,9 +65,6 @@ namespace Courses.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WCCIId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Students");
@@ -75,22 +74,19 @@ namespace Courses.Migrations
                         {
                             Id = 1,
                             FirstName = "Carlos",
-                            LastName = "Lopez",
-                            WCCIId = "W4657864"
+                            LastName = "Lopez"
                         },
                         new
                         {
                             Id = 2,
                             FirstName = "Davis",
-                            LastName = "Murphy",
-                            WCCIId = "W6889555"
+                            LastName = "Murphy"
                         },
                         new
                         {
                             Id = 3,
                             FirstName = "John",
-                            LastName = "Doe",
-                            WCCIId = "W98856855"
+                            LastName = "Doe"
                         });
                 });
 

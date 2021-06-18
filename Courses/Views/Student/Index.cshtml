@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Courses.Models.Student>
+
+<h2>Student List</h2>
+<hr />
+<ul>
+    @foreach (var student in Model)
+    {
+        <li><a href="/Student/Details/@student.Id">@student.FullName</a></li>
+    }
+</ul>

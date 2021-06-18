@@ -9,29 +9,26 @@ namespace Courses.Repositories
 {
     public class StudentRepository : IRepository<Student>, IStudentSearch
     {
-        public List<Student> studentList;
-        public StudentRepository()
+        public UniversityContext db;
+        public StudentRepository(UniversityContext db)
         {
-            studentList = new List<Student>()
-            {
-                new Student(){ Id=235, FirstName = "Carlos", LastName = "Lopez" },
-                new Student(){ Id=546, FirstName = "Davis", LastName = "Murphy" }
-            };
+            this.db = db;
         }
 
         public IEnumerable<Student> GetAll()
         {
-            return studentList;
+            return db.Students.ToList();
         }
 
         public Student GetByID(int id)
         {
-            return studentList.Where(s => s.Id == id).FirstOrDefault();
+            return db.Students.Where(s => s.Id == id).FirstOrDefault();
         }
 
         public Student SearchById(string id)
         {
-            return studentList.Where(s => s.StudentId == id).FirstOrDefault();
+            return new Student();
+            //return db.Students.Where(s => s.StudentId == id).FirstOrDefault();
         }
     }
 }
