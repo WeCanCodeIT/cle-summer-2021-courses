@@ -20,5 +20,24 @@ namespace Courses.Controllers
         {
             return View(studentRepo.GetAll());
         }
+
+        public IActionResult Create()
+        {
+            return View(new Student());
+        }
+
+        [HttpPost]
+        public IActionResult Create(Student model)
+        {
+            studentRepo.Create(model);
+            return RedirectToAction("Update", new { id = model.Id });
+        }
+
+        public IActionResult Update(int id)
+        {
+            Student student = studentRepo.GetByID(id);
+            return View(student);
+        }
+
     }
 }

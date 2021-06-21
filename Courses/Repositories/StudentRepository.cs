@@ -17,7 +17,8 @@ namespace Courses.Repositories
 
         public void Create(Student obj)
         {
-            throw new NotImplementedException();
+            db.Students.Add(obj);
+            db.SaveChanges();
         }
 
         public void Delete(Student obj)
@@ -43,7 +44,8 @@ namespace Courses.Repositories
 
         public void Update(Student obj)
         {
-            throw new NotImplementedException();
+            db.Students.Update(obj);
+            db.SaveChanges();
         }
     }
 }

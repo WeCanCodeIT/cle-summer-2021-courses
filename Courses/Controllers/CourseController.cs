@@ -37,8 +37,9 @@ namespace Courses.Controllers
         public ActionResult Create(Course course)
         {
             courseRepo.Create(course);
-            ViewBag.ResultMessage = "This course was successfully added.";
-            return View(course);
+            //ViewBag.ResultMessage = "This course was successfully added.";
+            //return View(course);
+            return RedirectToAction("Update", new { id = course.Id });
         }
 
         public IActionResult Update(int id)
@@ -51,7 +52,23 @@ namespace Courses.Controllers
         public IActionResult Update(Course course)
         {
             courseRepo.Update(course);
+            ViewBag.ResultMessage = "This course was successfully updated.";
             return View(course);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Course course = courseRepo.GetByID(id);
+            return View(course);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Course obj)
+        {
+            //Course course = courseRepo.GetByID(obj.Id);
+            courseRepo.Delete(obj);
+
+            return RedirectToAction("Index");
         }
 
     }
