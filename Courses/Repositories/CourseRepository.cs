@@ -15,6 +15,18 @@ namespace Courses.Repositories
             this.db = db;
         }
 
+        public void Create(Course obj)
+        {
+            db.Courses.Add(obj);
+            db.SaveChanges();
+        }
+
+        public void Delete(Course obj)
+        {
+            db.Courses.Remove(obj);
+            db.SaveChanges();
+        }
+
         public IEnumerable<Course> GetAll()
         {
             return db.Courses.ToList();
@@ -23,6 +35,12 @@ namespace Courses.Repositories
         public Course GetByID(int id)
         {
             return db.Courses.Where(c => c.Id == id).FirstOrDefault();
+        }
+
+        public void Update(Course obj)
+        {
+            db.Courses.Update(obj);
+            db.SaveChanges();
         }
     }
 }

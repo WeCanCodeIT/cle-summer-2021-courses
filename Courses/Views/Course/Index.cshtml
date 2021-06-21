@@ -5,11 +5,12 @@
 }
 
 <h2>Courses List</h2>
+<a href="/Course/Create">Add New Course</a>
 <hr />
 <ul>
     @foreach (var course in Model)
     {
-        <li><a href="/Course/Details/@course.Id">@course.Name</a></li>
+        <li><a href="/Course/Update/@course.Id">@course.Name</a></li>
     }
 </ul>
 

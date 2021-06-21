@@ -15,6 +15,16 @@ namespace Courses.Repositories
             this.db = db;
         }
 
+        public void Create(Student obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Student obj)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Student> GetAll()
         {
             return db.Students.ToList();
@@ -27,8 +37,13 @@ namespace Courses.Repositories
 
         public Student SearchById(string id)
         {
-            return new Student();
-            //return db.Students.Where(s => s.StudentId == id).FirstOrDefault();
+            //return new Student();
+            return db.Students.Where(s => s.WCCIId == id).FirstOrDefault();
+        }
+
+        public void Update(Student obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

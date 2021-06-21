@@ -16,7 +16,7 @@ namespace Courses.Controllers
             this.studentRepo = studentRepo;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View(studentRepo.GetAll());
         }

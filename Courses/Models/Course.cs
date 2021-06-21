@@ -12,7 +12,6 @@ namespace Courses.Models
         public virtual List<StudentCourses> Students { get; set; }
         public Course()
         {
-            Id = 99;
             Name = "Unnamed Course";
         }
         public Course(int id, string name)

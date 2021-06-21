@@ -27,5 +27,32 @@ namespace Courses.Controllers
 
             return View(courseRepo.GetByID(id));
         }
+
+        public IActionResult Create()
+        {
+            return View(new Course());
+        }
+
+        [HttpPost]
+        public ActionResult Create(Course course)
+        {
+            courseRepo.Create(course);
+            ViewBag.ResultMessage = "This course was successfully added.";
+            return View(course);
+        }
+
+        public IActionResult Update(int id)
+        {
+            Course course = courseRepo.GetByID(id);
+            return View(course);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Course course)
+        {
+            courseRepo.Update(course);
+            return View(course);
+        }
+
     }
 }
