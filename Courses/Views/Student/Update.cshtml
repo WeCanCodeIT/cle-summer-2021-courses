@@ -9,6 +9,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        <p>@ViewBag.ResultMessage</p>
         <form asp-action="Update">
             <input type="hidden" asp-for="Id" class="form-control" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

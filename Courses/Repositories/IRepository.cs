@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Courses.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Courses.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> : ISelectList
     {
         IEnumerable<T> GetAll();
         T GetByID(int id);

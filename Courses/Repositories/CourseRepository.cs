@@ -37,6 +37,11 @@ namespace Courses.Repositories
             return db.Courses.Where(c => c.Id == id).FirstOrDefault();
         }
 
+        public IEnumerable<Course> GetCourses()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Course obj)
         {
             db.Courses.Update(obj);

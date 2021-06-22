@@ -19,11 +19,13 @@ namespace Courses.Repositories
         {
             db.Students.Add(obj);
             db.SaveChanges();
+
         }
 
         public void Delete(Student obj)
         {
-            throw new NotImplementedException();
+            db.Students.Remove(obj);
+            db.SaveChanges();
         }
 
         public IEnumerable<Student> GetAll()
@@ -34,6 +36,11 @@ namespace Courses.Repositories
         public Student GetByID(int id)
         {
             return db.Students.Where(s => s.Id == id).FirstOrDefault();
+        }
+
+        public IEnumerable<Course> GetCourses()
+        {
+            return db.Courses.ToList();
         }
 
         public Student SearchById(string id)

@@ -42,5 +42,7 @@ namespace Courses
 
         }
 
+        public DbSet<Courses.Models.StudentCourses> StudentCourses { get; set; }
+
     }
 }

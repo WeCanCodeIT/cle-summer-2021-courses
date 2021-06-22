@@ -39,5 +39,21 @@ namespace Courses.Controllers
             return View(student);
         }
 
+        [HttpPost]
+        public IActionResult Update(Student model)
+        {
+            studentRepo.Update(model);
+            ViewBag.ResultMessage = "This was successfully updated.";
+            return View(model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Student studentToDelete = studentRepo.GetByID(id);
+            studentRepo.Delete(studentToDelete);
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
