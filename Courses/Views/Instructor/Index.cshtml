@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Courses.Models.Instructor>
+@section styles{
+    <link rel="stylesheet" href="" />
+}
+
+<h2>Instructor List</h2>
+<a href="/Instructor/Create">Add New Instructor</a>
+<hr />
+<ul>
+    @foreach (var instructor in Model)
+    {
+        <li>@instructor.Name</li>
+    }
+</ul>
+
+@section scripts{
+    <script></script>
+}

@@ -1,4 +1,5 @@
-﻿using Courses.Models;
+﻿using Courses.Controllers;
+using Courses.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Courses.Tests
     {
         // sut is Single Unit Test
         Course sut;
+        //CourseController courseController_sut;
 
         public CourseTests()
         {

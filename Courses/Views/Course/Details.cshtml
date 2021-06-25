@@ -17,6 +17,7 @@
     <hr />
     <h3>Course Id: @Model.Id</h3>
     <h3>Course Name: @Model.Name</h3>
+    <h3>Course Instructor: <a href="/Instructor/Details/@Model.InstructorId">@Model.Instructor.Name</a></h3>
     <hr />
     <h4>Students Enrolled</h4>
     @foreach(var enrollment in Model.Students)

@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 
 namespace Courses.Models
 {
-    public class Course
+    public class Instructor
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual List<StudentCourses> Students { get; set; }
-        public int InstructorId { get; set; }
-        public virtual Instructor Instructor { get; set; }
-        public Course()
+        public virtual List<Course> Courses { get; set; }
+
+        public Instructor()
         {
-            Name = "Unnamed Course";
+
         }
-        public Course(int id, string name)
+
+        public Instructor(int id, string name)
         {
             Id = id;
             Name = name;

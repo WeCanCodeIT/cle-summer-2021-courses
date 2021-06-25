@@ -19,7 +19,6 @@ namespace Courses.Repositories
         {
             db.Students.Add(obj);
             db.SaveChanges();
-
         }
 
         public void Delete(Student obj)
