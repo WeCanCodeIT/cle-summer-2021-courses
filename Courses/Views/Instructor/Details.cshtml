@@ -1,0 +1,21 @@
+﻿@model Courses.Models.Instructor
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Instructor</title>
+</head>
+<body>
+    <h1>Instructor Details</h1>
+    <hr />
+    <h3>Instructor Id: @Model.Id</h3>
+    <h3>Instructor Name: @Model.Name</h3>
+    <hr />
+    <h4>Courses Teaching</h4>
+    @foreach (var course in Model.Courses)
+    {
+        <p>@course.Name</p>
+    }
+</body>
+</html>

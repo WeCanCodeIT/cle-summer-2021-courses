@@ -9,8 +9,9 @@ namespace Courses
 {
     public class UniversityContext : DbContext
     {
-        public DbSet<Course> Courses { get; set; }
+        public DbSet<Course> Courses { get; set;}
         public DbSet<Student> Students { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,22 +25,24 @@ namespace Courses
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Course>().HasData(
-                new Course(1, "Psychology 101"),
-                new Course(2, "Sociology 101"),
-                new Course(3, "Political Science 101")
+                new Course(1, "Psychology 101") { InstructorId = 1},
+                new Course(2, "Sociology 101") { InstructorId = 2 },
+                new Course(3, "Political Science 101") { InstructorId = 3 }
             );
-
             modelBuilder.Entity<Student>().HasData(
                 new Student(1, "Carlos", "Lopez") { WCCIId = "W4657864" },
                 new Student(2, "Davis", "Murphy") { WCCIId = "W6889555" },
                 new Student(3, "John", "Doe") { WCCIId = "W98856855" }
             );
-
             modelBuilder.Entity<StudentCourses>().HasData(
                 new StudentCourses() { Id = 1, CourseId = 3, StudentId = 1 },
                 new StudentCourses() { Id = 2, CourseId = 2, StudentId = 3 }
             );
-
+            modelBuilder.Entity<Instructor>().HasData(
+                new Instructor() {Id = 1, Name = "Davis Murphy" },
+                new Instructor() { Id = 2, Name = "Carlos Lopez" },
+                new Instructor() { Id = 3, Name = "Kevin McDonald" }
+            );
         }
 
         public DbSet<Courses.Models.StudentCourses> StudentCourses { get; set; }
