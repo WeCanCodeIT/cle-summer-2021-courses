@@ -4,14 +4,16 @@ using Courses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Courses.Migrations
 {
     [DbContext(typeof(UniversityContext))]
-    partial class UniversityContextModelSnapshot : ModelSnapshot
+    [Migration("20210629140338_AddedProfilePics")]
+    partial class AddedProfilePics
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +72,6 @@ namespace Courses.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePic")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -81,20 +82,17 @@ namespace Courses.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Davis Murphy",
-                            ProfilePic = ""
+                            Name = "Davis Murphy"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Carlos Lopez",
-                            ProfilePic = ""
+                            Name = "Carlos Lopez"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Kevin McDonald",
-                            ProfilePic = ""
+                            Name = "Kevin McDonald"
                         });
                 });
 

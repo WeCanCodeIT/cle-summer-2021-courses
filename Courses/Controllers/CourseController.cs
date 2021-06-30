@@ -42,21 +42,29 @@ namespace Courses.Controllers
             return RedirectToAction("Update", new { id = course.Id });
         }
 
-        public IActionResult Update(int id)
+        public ViewResult Update(int id)
         {
             Course course = courseRepo.GetByID(id);
             return View(course);
         }
 
         [HttpPost]
-        public IActionResult Update(Course course)
+        public ViewResult Update(Course course)
         {
-            courseRepo.Update(course);
-            ViewBag.ResultMessage = "This course was successfully updated.";
+            if (String.IsNullOrEmpty(course.Name))
+            {
+                ViewBag.ResultMessage = "You cannot leave the course name blank.";
+            }
+            else
+            {
+                courseRepo.Update(course);
+                ViewBag.ResultMessage = "This course was successfully updated.";
+            }
+            
             return View(course);
         }
 
-        public IActionResult Delete(int id)
+        public ViewResult Delete(int id)
         {
             Course course = courseRepo.GetByID(id);
             return View(course);

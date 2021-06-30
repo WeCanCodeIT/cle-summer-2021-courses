@@ -1,8 +1,10 @@
 ﻿using Courses.Models;
 using Courses.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,8 +29,18 @@ namespace Courses.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Student model)
+        public IActionResult Create(Student model, IFormFile ProfilePic)
         {
+            if(ProfilePic != null)
+            {
+                string path = Directory.GetCurrentDirectory() + "\\wwwroot\\uploads\\students\\" + ProfilePic.FileName;
+                using(var fileStream = System.IO.File.Create(path))
+                {
+                    ProfilePic.CopyTo(fileStream);
+                }
+                model.ProfilePic = "/uploads/students/" + ProfilePic.FileName;
+            }
+
             studentRepo.Create(model);
             return RedirectToAction("Update", new { id = model.Id });
         }
@@ -40,7 +52,7 @@ namespace Courses.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Student model)
+        public IActionResult Update(Student model, string comment)
         {
             studentRepo.Update(model);
             ViewBag.ResultMessage = "This was successfully updated.";

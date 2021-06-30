@@ -39,9 +39,9 @@ namespace Courses
                 new StudentCourses() { Id = 2, CourseId = 2, StudentId = 3 }
             );
             modelBuilder.Entity<Instructor>().HasData(
-                new Instructor() {Id = 1, Name = "Davis Murphy" },
-                new Instructor() { Id = 2, Name = "Carlos Lopez" },
-                new Instructor() { Id = 3, Name = "Kevin McDonald" }
+                new Instructor() {Id = 1, Name = "Davis Murphy", ProfilePic = "demopic.jpg" },
+                new Instructor() { Id = 2, Name = "Carlos Lopez", ProfilePic = "demopic.jpg" },
+                new Instructor() { Id = 3, Name = "Kevin McDonald", ProfilePic = "demopic.jpg" }
             );
         }
 

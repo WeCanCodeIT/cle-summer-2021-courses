@@ -31,6 +31,22 @@ namespace Courses.Tests
         }
 
         [Fact]
+        public void Delete_Displays_Course_To_Delete_Successfully()
+        {
+            // Arrange
+            var course = new Course() { Id = 1, InstructorId = 1, Students = new List<StudentCourses>() };
+            courseRepo.GetByID(1).Returns(course);
+            courseRepo.GetAll().Returns(new List<Course>());
+
+            // Act
+            var result = sut.Delete(1);
+
+            // Assert
+            Assert.Equal(course, result.Model);
+            //Assert.IsType<RedirectToActionResult>(result);
+        }
+
+        [Fact]
         public void Create_Returns_A_View()
         {
             // Arrange
@@ -39,6 +55,48 @@ namespace Courses.Tests
 
             //Assert
             Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
+        public void Create_Adds_A_Model()
+        {
+            // Arrange
+            Course model = new Course() { Name = "Sample Course", InstructorId = 1 };
+
+            // Act
+            var result = sut.Create(model);
+
+            // Assert
+            Assert.IsType<RedirectToActionResult>(result);
+        }
+
+        [Fact]
+        public void Update_Returns_A_View()
+        {
+            // Arrange
+            var courseToUpdate = new Course();
+            courseRepo.GetByID(1).Returns(courseToUpdate);
+
+            // Act
+            var result = sut.Update(1);
+
+            // Assert
+            Assert.IsType<ViewResult>(result);
+            //Assert.Equal(courseToUpdate, result.Model);
+        }
+
+        [Fact]
+        public void Update_Passes_Course_To_View()
+        {
+            // Arrange
+            var courseToUpdate = new Course() { Name = "Test Course" };
+            courseRepo.GetByID(1).Returns(courseToUpdate);
+
+            // Act
+            var result = sut.Update(courseToUpdate);
+
+            // Assert
+            Assert.Equal("This course was successfully updated.", result.ViewData["ResultMessage"]);
         }
 
         [Fact]

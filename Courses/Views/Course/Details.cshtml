@@ -20,9 +20,10 @@
     <h3>Course Instructor: <a href="/Instructor/Details/@Model.InstructorId">@Model.Instructor.Name</a></h3>
     <hr />
     <h4>Students Enrolled</h4>
-    @foreach(var enrollment in Model.Students)
+    @foreach (var enrollment in Model.Students)
     {
         <p>@enrollment.Student.FullName</p>
     }
+
 </body>
 </html>

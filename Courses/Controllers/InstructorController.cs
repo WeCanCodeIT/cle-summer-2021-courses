@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Courses.Controllers
 {
@@ -31,10 +33,23 @@ namespace Courses.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Instructor model)
+        public IActionResult Create(Instructor model, IFormFile ProfilePic)
         {
-            db.Instructors.Add(model);
-            db.SaveChanges();
+            // save profile
+            if(ProfilePic != null)
+            {
+                string path = Directory.GetCurrentDirectory() + "\\wwwroot\\uploads\\" + ProfilePic.FileName;
+                using(var fileStream = System.IO.File.Create(path))
+                {
+                    ProfilePic.CopyTo(fileStream);
+                }
+                
+                // update our model
+                model.ProfilePic = "/uploads/" + ProfilePic.FileName;
+
+                db.Instructors.Add(model);
+                db.SaveChanges();
+            }
 
             return RedirectToAction("Index");
         }
