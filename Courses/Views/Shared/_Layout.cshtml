@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager;
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -12,6 +15,11 @@
         <h1>My Courses and Student Registration Application</h1>
         <nav>
             <ul>
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li><a href="/Account/Logout">Logout @User.Identity.Name</a></li>
+                }
+                <li><a href="/Account/Register">Register</a></li>
                 <li><a href="/Student/">Students</a></li>
                 <li><a href="/Course/">Courses</a></li>
                 <li><a href="/Instructor/">Instructors</a></li>

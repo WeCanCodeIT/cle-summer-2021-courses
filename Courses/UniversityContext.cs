@@ -1,4 +1,5 @@
 ﻿using Courses.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Courses
 {
-    public class UniversityContext : DbContext
+    public class UniversityContext : IdentityDbContext
     {
         public DbSet<Course> Courses { get; set;}
         public DbSet<Student> Students { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<StudentCourses> StudentCourses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,13 +41,15 @@ namespace Courses
                 new StudentCourses() { Id = 2, CourseId = 2, StudentId = 3 }
             );
             modelBuilder.Entity<Instructor>().HasData(
-                new Instructor() {Id = 1, Name = "Davis Murphy", ProfilePic = "demopic.jpg" },
+                new Instructor() { Id = 1, Name = "Davis Murphy", ProfilePic = "demopic.jpg" },
                 new Instructor() { Id = 2, Name = "Carlos Lopez", ProfilePic = "demopic.jpg" },
                 new Instructor() { Id = 3, Name = "Kevin McDonald", ProfilePic = "demopic.jpg" }
             );
+
+            base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Courses.Models.StudentCourses> StudentCourses { get; set; }
+        
 
     }
 }

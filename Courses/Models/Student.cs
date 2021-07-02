@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace Courses.Models
         public string State { get; set; }
         public string Zipcode { get; set; }
         public virtual List<StudentCourses> Courses { get; set; }
+        
 
         public Student()
         {

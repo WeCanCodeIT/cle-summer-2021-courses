@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Courses.Controllers
 {
+    
     public class InstructorController : Controller
     {
         public UniversityContext db;
@@ -26,12 +28,12 @@ namespace Courses.Controllers
         {
             return View(db.Instructors.Where(i => i.Id == id).FirstOrDefault());
         }
-
+        [Authorize]
         public IActionResult Create()
         {
             return View(new Instructor());
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult Create(Instructor model, IFormFile ProfilePic)
         {

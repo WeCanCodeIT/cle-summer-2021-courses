@@ -7,6 +7,7 @@ using Courses.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -20,6 +21,7 @@ namespace Courses
         {
             services.AddControllersWithViews();
             services.AddDbContext<UniversityContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UniversityContext>();
             services.AddScoped<IRepository<Course>, CourseRepository>();
             services.AddScoped<IRepository<Student>, StudentRepository>();
         }
@@ -43,6 +45,7 @@ namespace Courses
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
